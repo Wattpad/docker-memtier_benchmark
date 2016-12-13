@@ -8,7 +8,7 @@ ifndef TAG
 	TAG := $(MEMTIER_VERSION)_$(UBUNTU_VERSION)_$(BUILD_VERSION)
 endif
 
-REPO=wattpad/docker-memtier_benchmarks
+REPO=wattpad/docker-memtier_benchmark
 IMAGE=$(REPO):$(TAG)
 
 build:
