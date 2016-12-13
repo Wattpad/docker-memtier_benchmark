@@ -2,7 +2,7 @@
 
 MEMTIER_VERSION=1.2.8
 BUILD_VERSION=build-$(shell git rev-parse --short HEAD)
-UBUNTU_VERSION=alpine-$(shell grep '^FROM ubuntu' Dockerfile  | cut -d ':' -f 2)
+UBUNTU_VERSION=ubuntu-$(shell grep '^FROM ubuntu' Dockerfile  | cut -d ':' -f 2)
 
 ifndef TAG
 	TAG := $(MEMTIER_VERSION)_$(UBUNTU_VERSION)_$(BUILD_VERSION)
@@ -13,6 +13,7 @@ IMAGE=$(REPO):$(TAG)
 
 build:
 	docker build -t $(IMAGE) --build-arg MEMTIER_VERSION=$(MEMTIER_VERSION) .
+	docker tag $(IMAGE) $(REPO):latest
 
 push: build
 	docker push $(IMAGE)
