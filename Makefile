@@ -12,7 +12,7 @@ REPO=wattpad/docker-memtier_benchmarks
 IMAGE=$(REPO):$(TAG)
 
 build:
-	docker build -t $(IMAGE) --build-arg MEMTIER_VERSION=1.2.8 .
+	docker build -t $(IMAGE) --build-arg MEMTIER_VERSION=$(MEMTIER_VERSION) .
 
 push: build
 	docker push $(IMAGE)
